@@ -1,22 +1,22 @@
 import arcade
 import random
 from dataclasses import dataclass
-
+#ecran
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-
+#nmbr de cercle
 NUM_CIRCLES = 20
 CIRCLE_RADIUS_RANGE = (10, 50)
 CIRCLE_COLORS = [arcade.color.BLUE, arcade.color.FANDANGO_PINK,
         arcade.color.FRENCH_ROSE, arcade.color.GOLDEN_POPPY]
-
+#informartion sur un cercle
 @dataclass
 class Circle:
     x: float
     y: float
     radius: float
     color: arcade.Color
-
+#outilpour ecrire
     def draw(self):
         arcade.draw_circle_filled(self.x, self.y, self.radius, self.color)
 
@@ -26,7 +26,7 @@ class MyGame(arcade.Window):
         self.circle_list = []
 
     def setup(self):
-        # Fill the circle list with 20 Circle objects
+        
         for i in range(NUM_CIRCLES):
             radius = random.randint(*CIRCLE_RADIUS_RANGE)
             x = random.randint(radius, SCREEN_WIDTH - radius)
@@ -39,7 +39,7 @@ class MyGame(arcade.Window):
         arcade.start_render()
         for circle in self.circle_list:
             circle.draw()
-
+#quandon click sa change decouleur ou delet
     def on_mouse_press(self, x, y, button, modifiers):
         if button == arcade.MOUSE_BUTTON_LEFT:
             # Find and remove the clicked circle
